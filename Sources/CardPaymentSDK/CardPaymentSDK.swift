@@ -21,11 +21,12 @@ public struct CardPaymentSDK {
     
     public static func getCardInfo(){
         guard let vc = viewController else { return }
+        var alert = PackageAlert(vc: vc)
         guard let number = cardNumber, let name = cardHolder else {
-            PackageAlert.showAlert(viewController: vc, "Card Payment", "Please enter card number and card holder name")
+            alert.showAlert("Card Payment", "Please enter card number and card holder name")
             return
         }
-        var message = "THIS IS THE CARD INFORMATION\n Card Number: \(number)\n Card Holder Name: \(name)"
-        PackageAlert.showAlert(viewController: vc, "Card Information", message)
+        let message = "Card Number: \(number)\n Card Holder Name: \(name)"
+        alert.showAlert("Card Information", message)
     }
 }

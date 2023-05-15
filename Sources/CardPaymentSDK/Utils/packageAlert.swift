@@ -10,11 +10,17 @@ import UIKit
 
 class PackageAlert{
     
+    public var viewController:UIViewController!
     
-    public static func showAlert(viewController:UIViewController, _ title:String, _ message:String){
+    public init(vc:UIViewController){
+        self.viewController = vc
+    }
+    
+    
+    public  func showAlert(_ title:String, _ message:String){
         var alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         var action = UIAlertAction(title: "OK", style: .default)
         alert.addAction(action)
-        viewController.present(alert, animated: true)
+        self.viewController.present(alert, animated: true)
     }
 }
