@@ -14,14 +14,10 @@ public struct CardPaymentSDK {
     
     public static func getCardInfo(){
         
-        guard let number = cardNumber else {
-            print("Please enter card number")
+        guard let number = cardNumber, let name = cardHolder else {
+            print("Please configure card")
             return
         }
-        guard let name = cardHolder else {
-            print("Please enter card holder name")
-            return
-        }
-        print("THIS IS THE CARD INFORMATION/n Card Number:\(number)/n Card Holder Name:\(name)")
+        print("THIS IS THE CARD INFORMATION\n Card Number:\(number)\n Card Holder Name:\(name)")
     }
 }
