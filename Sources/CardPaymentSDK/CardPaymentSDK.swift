@@ -1,17 +1,20 @@
+
+
+
 public struct CardPaymentSDK {
 
-    public static func configureUser(username:String){
-        userName = username
+    public static func configureUser(cardnumber:String){
+        cardNumber = cardnumber
     }
     
-    private static var userName:String?
+    private static var cardNumber:String?
     
-    public static func printUsername(){
+    public static func printCardNumber(){
         
-        guard let name = userName else {
-            print("Please entere a user name")
+        guard let number = cardNumber else {
+            print("Please enter card number")
             return
         }
-        print("THIS IS THE USER NAME ENTERED \(name)")
+        print("THIS IS THE CARD NUMBER \(number)")
     }
 }
