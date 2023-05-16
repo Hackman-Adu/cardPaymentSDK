@@ -23,7 +23,7 @@ public struct CardPaymentSDK {
         guard let vc = viewController else { return }
         var alert = PackageAlert(vc: vc)
         guard let number = cardNumber, let name = cardHolder else {
-            alert.showAlert("Card Payment", "Please enter card number and card holder name")
+            alert.showAlert("Card Payment", "Please enter your card number and card holder name")
             return
         }
         let message = "Card Number: \(number)\n Card Holder Name: \(name)"
