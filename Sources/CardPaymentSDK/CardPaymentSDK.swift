@@ -18,6 +18,7 @@ public class CardPaymentSDK  {
         self.viewController = vc
         self.paymentViewController = CardPaymentView()
         paymentViewController.paymentViewTitle = paymentViewTitle
+        paymentViewController.delegate = self.delegate
         paymentViewController.paymentViewCancelText = paymentViewCancelText
     }
     
