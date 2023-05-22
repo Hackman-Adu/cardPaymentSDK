@@ -34,7 +34,7 @@ public struct CardPaymentSDK {
     public static func showCardPaymentView(){
         var controller = CardPaymentView()
         var navController = UINavigationController(rootViewController: controller)
-//        navController.modalPresentationStyle = .fullScreen
+        navController.title = "Card Payment SDK"
         viewController?.present(navController, animated: true)
     }
 }
@@ -65,7 +65,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         self.view.addSubview(webView)
         NSLayoutConstraint.activate([
             webView.topAnchor
-                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 50),
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 45),
             webView.leftAnchor
                 .constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
             webView.bottomAnchor
@@ -97,9 +97,8 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     }
     
    public func setupNavBar() {
-        navigationController?.navigationBar.barTintColor = .systemBlue
-        navigationController?.navigationBar.tintColor = .white
-       navigationController?.title = "Card Payment SDK"
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.tintColor = .systemBlue
     }
     
     public lazy var webView: WKWebView = {
