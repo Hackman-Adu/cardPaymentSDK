@@ -44,21 +44,17 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler{
        print("THIS IS WHERE CALL BACK WILL BE HANDLED")
     }
     
-    
-    public var webView:WKWebView!
-    
     public override func viewDidLoad() {
         super.viewDidLoad()
         let config = WKWebViewConfiguration()
         config.userContentController.add(self,name: "web_content_hanlder")
         let webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), configuration:config)
-    }
-    
-    public override func viewDidLayoutSubviews() {
-        self.view.addSubview(webView)
+        self.view.addSubview(webview)
         if let url = URL(string: "https://www.google.com"){
-            webView.load(.init(url: url))
+            webview.load(.init(url: url))
         }
     }
+    
+  
 }
 
