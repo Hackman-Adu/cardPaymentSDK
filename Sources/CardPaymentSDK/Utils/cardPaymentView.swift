@@ -17,7 +17,7 @@ public protocol PaymentViewDismissed{
 public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate{
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-        print("THIS IS THE INFORMATION FROM THE WEBVIEW \(String(describing: message.webView?.url))")
+      
     }
     
     public var paymentViewTitle:String  = "Make Payment"
@@ -75,12 +75,9 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     }
     
     @objc public func dismissDialog(){
-        let st = UIStoryboard(name: "Storyboard", bundle: Bundle.module)
-        let viewController = st.instantiateViewController(withIdentifier: "NewCardViewController") as! NewCardViewController
-        self.present(viewController, animated: true)
-//        dismiss(animated: true) {
-//            self.delegate?.onPaymentDialogDismissed(res: PaymentResponse(paymentData: nil, status: .canceled))
-//        }
+        dismiss(animated: true) {
+            self.delegate?.onPaymentDialogDismissed(res: PaymentResponse(paymentData: nil, status: .canceled))
+        }
        
     }
     

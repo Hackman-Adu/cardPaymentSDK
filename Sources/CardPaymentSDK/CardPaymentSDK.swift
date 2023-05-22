@@ -25,7 +25,7 @@ public class CardPaymentSDK  {
     
     public func  beginPayment(){
         paymentViewController.delegate = self.delegate
-        let navController = UINavigationController(rootViewController: NewCardViewController())
+        let navController = UINavigationController(rootViewController: paymentViewController)
         self.viewController?.present(navController, animated: true)
     }
     
