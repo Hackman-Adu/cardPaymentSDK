@@ -10,9 +10,9 @@ import WebKit
 
 public class NewCardViewController: UIViewController, WKNavigationDelegate {
 
-    @IBOutlet weak var loaderView: UIActivityIndicatorView!
+    @IBOutlet weak public var loaderView: UIActivityIndicatorView!
     
-    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak public var webView: WKWebView!
     
     override public func viewDidLoad() {
         super.viewDidLoad()
