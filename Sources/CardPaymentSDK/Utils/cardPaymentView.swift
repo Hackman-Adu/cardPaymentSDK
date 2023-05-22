@@ -68,6 +68,10 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         }
     }
     
+    public override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
+        print("IT HAS BEEN DISMISSED HERE....")
+    }
+    
     public func createNavItems(){
         let dismissButton = UIBarButtonItem(title: paymentViewCancelText, style: .plain, target: self, action: #selector(dismissDialog))
         navigationItem.leftBarButtonItem = dismissButton
