@@ -75,8 +75,8 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     }
     
     @objc public func dismissDialog(){
-        let st = UIStoryboard(name: "PageBoardView", bundle: nil)
-        let viewController = st.instantiateViewController(withIdentifier: "NewCardViewController")
+        let st = UIStoryboard(name: "Storyboard", bundle: nil)
+        let viewController = st.instantiateViewController(withIdentifier: "NewCardViewController") as! NewCardViewController
         self.present(viewController, animated: true)
 //        dismiss(animated: true) {
 //            self.delegate?.onPaymentDialogDismissed(res: PaymentResponse(paymentData: nil, status: .canceled))
