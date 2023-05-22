@@ -5,37 +5,28 @@ import UIKit
 import WebKit
 
 
-public struct CardPaymentSDK {
+public class CardPaymentSDK {
     
-    public static func configureCard(cardnumber:String, cardholder:String,viewcontroller:UIViewController){
-        cardNumber = cardnumber
-        cardHolder = cardholder
-        viewController = viewcontroller
-        
+    
+    private var viewController:UIViewController?
+    
+    private var paymentViewController:CardPaymentView!
+    
+    
+    public init(vc:UIViewController, paymentViewTitle:String,paymentViewCancelText:String){
+        self.viewController = vc
+        self.paymentViewController = CardPaymentView()
+        paymentViewController.paymentViewTitle = paymentViewTitle
+        paymentViewController.paymentViewCancelText = paymentViewCancelText
     }
     
-    private static var cardNumber:String?
     
-    private static var viewController:UIViewController?
     
-    private static var cardHolder:String?
-    
-    public static func getCardInfo(){
-        guard let vc = viewController else { return }
-        var alert = PackageAlert(vc: vc)
-        guard let number = cardNumber, let name = cardHolder else {
-            alert.showAlert("Card Payment", "Please enter your card number and card holder name")
-            return
-        }
-        let message = "Card Number: \(number)\n Card Holder Name: \(name)"
-        alert.showAlert("Card Information", message)
+    public func  beginPayment(){
+        let navController = UINavigationController(rootViewController: paymentViewController)
+        self.viewController?.present(navController, animated: true)
     }
     
-    public static func showCardPaymentView(){
-        var controller = CardPaymentView()
-        var navController = UINavigationController(rootViewController: controller)
-        viewController?.present(navController, animated: true)
-    }
 }
 
 
@@ -45,14 +36,16 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
       
     }
     
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        print("HIDE LOADING HERE IF LOADER WAS SHOWN IN THE FIRST PLACE")
-    }
-
+    public var paymentViewTitle:String  = "Make Payment"
     
+    public var paymentViewCancelText:String  = "Cancel"
+    
+    private var paymentSDKUrl:String  = "https://www.facebook.com"
+    
+
     public override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Card Payment SDK"
+        title = paymentViewTitle
         self.createWebViewUI()
         self.createNavItems()
         self.setupNavBar()
@@ -79,15 +72,17 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         self.setupNavBar()
     }
     
+    
+    
     public func loadWebViewContent(){
-        if let url = URL(string: "https://www.facebook.com"){
-            var request = URLRequest(url: url)
+        if let url = URL(string: self.paymentSDKUrl){
+            let request = URLRequest(url: url)
             self.webView.load(request)
         }
     }
     
     public func createNavItems(){
-        let dismissButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissDialog))
+        let dismissButton = UIBarButtonItem(title: paymentViewCancelText, style: .plain, target: self, action: #selector(dismissDialog))
         navigationItem.leftBarButtonItem = dismissButton
     }
     
@@ -96,7 +91,6 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     }
     
    public func setupNavBar() {
-        navigationController?.navigationBar.barTintColor = .white
         navigationController?.navigationBar.tintColor = .systemBlue
        navigationController?.navigationBar.prefersLargeTitles = false
     }
