@@ -6,12 +6,12 @@ import WebKit
 
 
 public struct CardPaymentSDK {
-
+    
     public static func configureCard(cardnumber:String, cardholder:String,viewcontroller:UIViewController){
         cardNumber = cardnumber
         cardHolder = cardholder
         viewController = viewcontroller
-    
+        
     }
     
     private static var cardNumber:String?
@@ -38,23 +38,48 @@ public struct CardPaymentSDK {
 }
 
 
-public class CardPaymentView:UIViewController, WKScriptMessageHandler{
+public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDelegate{
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-       print("THIS IS WHERE CALL BACK WILL BE HANDLED")
+      
     }
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        let config = WKWebViewConfiguration()
-        config.userContentController.add(self,name: "web_content_hanlder")
-        let webview = WKWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height), configuration:config)
-        self.view.addSubview(webview)
-        if let url = URL(string: "https://www.google.com"){
-            webview.load(.init(url: url))
+        self.createWebViewUI()
+        self.loadWebViewContent()
+    }
+    
+    public func createWebViewUI(){
+        self.view.addSubview(webView)
+        NSLayoutConstraint.activate([
+            webView.topAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            webView.leftAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+            webView.bottomAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            webView.rightAnchor
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.rightAnchor)
+        ])
+    }
+    
+    public func loadWebViewContent(){
+        if let url = URL(string: "https://www.facebook.com"){
+            var request = URLRequest(url: url)
+            self.webView.load(request)
         }
     }
     
-  
+    public lazy var webView: WKWebView = {
+        let webConfiguration = WKWebViewConfiguration()
+        webConfiguration.userContentController.add(self,name: "webcontent_handler_name _here")
+        let webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        return webView
+    }()
+    
+    
 }
 
