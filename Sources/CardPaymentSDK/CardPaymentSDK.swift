@@ -48,6 +48,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         super.viewDidLoad()
         self.createWebViewUI()
         self.loadWebViewContent()
+        self.createNavItems()
     }
     
     public func createWebViewUI(){
@@ -64,11 +65,30 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         ])
     }
     
+    public override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupNavBar()
+    }
+    
     public func loadWebViewContent(){
         if let url = URL(string: "https://www.facebook.com"){
             var request = URLRequest(url: url)
             self.webView.load(request)
         }
+    }
+    
+    public func createNavItems(){
+        let dismissButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(dismissDialog))
+        navigationItem.leftBarButtonItem = dismissButton
+    }
+    
+    @objc public func dismissDialog(){
+        dismiss(animated: true)
+    }
+    
+    func setupNavBar() {
+        self.navigationController?.navigationBar.barTintColor = .systemBlue
+        self.navigationController?.navigationBar.tintColor = .white
     }
     
     public lazy var webView: WKWebView = {
