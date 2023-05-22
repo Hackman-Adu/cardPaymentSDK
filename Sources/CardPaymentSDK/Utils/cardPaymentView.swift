@@ -74,8 +74,10 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     }
     
     @objc public func dismissDialog(){
-        dismiss(animated: true)
-        delegate?.onPaymentDialogDismissed(res: PaymentResponse(paymentData: nil, status: .canceled))
+        dismiss(animated: true) {
+            self.delegate?.onPaymentDialogDismissed(res: PaymentResponse(paymentData: nil, status: .canceled))
+        }
+       
     }
     
    public func setupNavBar() {

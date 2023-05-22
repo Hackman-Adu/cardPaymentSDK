@@ -18,13 +18,13 @@ public class CardPaymentSDK  {
         self.viewController = vc
         self.paymentViewController = CardPaymentView()
         paymentViewController.paymentViewTitle = paymentViewTitle
-        paymentViewController.delegate = self.delegate
         paymentViewController.paymentViewCancelText = paymentViewCancelText
     }
     
     
     
     public func  beginPayment(){
+        paymentViewController.delegate = self.delegate
         let navController = UINavigationController(rootViewController: paymentViewController)
         self.viewController?.present(navController, animated: true)
     }
