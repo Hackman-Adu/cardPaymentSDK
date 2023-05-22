@@ -35,7 +35,7 @@ public struct CardPaymentSDK {
         var controller = CardPaymentView()
         var navController = UINavigationController(rootViewController: controller)
 //        navController.modalPresentationStyle = .fullScreen
-        viewController.present(navController, animated: true)
+        viewController?.present(navController, animated: true)
     }
 }
 
