@@ -41,13 +41,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="loaderView" destination="iUA-dH-SF8" id="RkF-Hf-SST"/>
-                        <outlet property="webView" destination="B1B-i3-0jO" id="rdp-7I-Irh"/>
+                        <outlet property="loaderView" destination="iUA-dH-SF8" id="xCF-eU-w4o"/>
+                        <outlet property="webView" destination="B1B-i3-0jO" id="T3P-Bq-xSo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63" y="-29"/>
+            <point key="canvasLocation" x="-73" y="-129"/>
         </scene>
     </scenes>
     <resources>

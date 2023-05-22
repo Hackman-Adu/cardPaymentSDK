@@ -14,7 +14,9 @@ public class NewCardViewController: UIViewController, WKNavigationDelegate {
     
     @IBOutlet weak public var webView: WKWebView!
     
-    override public func viewDidLoad() {
+    
+    
+    public override func viewDidLoad() {
         super.viewDidLoad()
         webView.navigationDelegate = self
         self.loadWebContent()
