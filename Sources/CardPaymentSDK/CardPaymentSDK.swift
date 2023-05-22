@@ -48,8 +48,8 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     public override func viewDidLoad() {
         super.viewDidLoad()
         self.createWebViewUI()
-        self.loadWebViewContent()
         self.createNavItems()
+        self.loadWebViewContent()
     }
     
     public func createWebViewUI(){
@@ -88,9 +88,10 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         dismiss(animated: true)
     }
     
-    func setupNavBar() {
-        self.navigationController?.navigationBar.barTintColor = .systemBlue
-        self.navigationController?.navigationBar.tintColor = .white
+   public func setupNavBar() {
+        var navController = UIApplication.shared.keyWindow?.rootViewController?.navigationController
+        navController?.navigationBar.barTintColor = .systemBlue
+        navController?.navigationBar.tintColor = .white
     }
     
     public lazy var webView: WKWebView = {
