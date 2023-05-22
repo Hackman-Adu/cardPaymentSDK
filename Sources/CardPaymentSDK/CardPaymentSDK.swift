@@ -34,7 +34,6 @@ public struct CardPaymentSDK {
     public static func showCardPaymentView(){
         var controller = CardPaymentView()
         var navController = UINavigationController(rootViewController: controller)
-        navController.title = "Card Payment SDK"
         viewController?.present(navController, animated: true)
     }
 }
@@ -53,7 +52,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     
     public override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.title = "Card Payment SDK"
+        title = "Card Payment SDK"
         self.createWebViewUI()
         self.createNavItems()
         self.setupNavBar()
@@ -97,8 +96,9 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     }
     
    public func setupNavBar() {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.tintColor = .systemBlue
+        navigationController?.navigationBar.barTintColor = .systemBlue
+        navigationController?.navigationBar.tintColor = .white
+       navigationController?.navigationBar.prefersLargeTitles = false
     }
     
     public lazy var webView: WKWebView = {
