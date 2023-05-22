@@ -33,7 +33,7 @@ public struct CardPaymentSDK {
     
     public static func showCardPaymentView(){
         var controller = CardPaymentView()
-        viewController?.present(controller, animated: true)
+        viewController?.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -52,6 +52,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     }
     
     public func createWebViewUI(){
+        self.view.backgroundColor = .white
         self.view.addSubview(webView)
         NSLayoutConstraint.activate([
             webView.topAnchor
