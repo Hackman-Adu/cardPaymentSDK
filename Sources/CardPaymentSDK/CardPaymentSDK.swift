@@ -33,9 +33,8 @@ public struct CardPaymentSDK {
     
     public static func showCardPaymentView(){
         var controller = CardPaymentView()
-        controller.title = "Card Payment SDK"
-        controller.navigationController?.title = "Card"
-        viewController?.present(controller, animated: true)
+        var navController = UINavigationController(rootViewController: controller)
+        navController.present(controller, animated: true)
     }
 }
 
@@ -48,11 +47,12 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         print("HIDE LOADING HERE IF LOADER WAS SHOWN IN THE FIRST PLACE")
-        navigationItem.title = "Card Payment Display Title"
     }
+
     
     public override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.title = "Card Payment SDK"
         self.createWebViewUI()
         self.createNavItems()
         self.setupNavBar()
@@ -98,6 +98,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
    public func setupNavBar() {
         navigationController?.navigationBar.barTintColor = .systemBlue
         navigationController?.navigationBar.tintColor = .white
+       navigationController?.title = "Card Payment SDK"
     }
     
     public lazy var webView: WKWebView = {
