@@ -40,10 +40,15 @@ public struct CardPaymentSDK {
 }
 
 
-public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDelegate{
+public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate{
     
     public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
       
+    }
+    
+    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("HIDE LOADING HERE IF LOADER WAS SHOWN IN THE FIRST PLACE")
+        navigationItem.title = "Card Payment Display Title"
     }
     
     public override func viewDidLoad() {
@@ -59,7 +64,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         self.view.addSubview(webView)
         NSLayoutConstraint.activate([
             webView.topAnchor
-                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 150),
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 50),
             webView.leftAnchor
                 .constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
             webView.bottomAnchor
