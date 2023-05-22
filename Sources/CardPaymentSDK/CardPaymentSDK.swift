@@ -5,24 +5,18 @@ import UIKit
 
 
 
-public class CardPaymentSDK: PaymentViewDismissed {
-    
-    
-    public func onDismissed(res: PaymentResponse) {
-        print("THIS IS THE RESPONSE STATUS \(res.status)")
-    }
-    
-    
+public class CardPaymentSDK  {
     
     private var viewController:UIViewController?
     
     private var paymentViewController:CardPaymentView!
     
+    public var delegate:PaymentViewDismissed?
+    
     
     public init(vc:UIViewController, paymentViewTitle:String,paymentViewCancelText:String){
         self.viewController = vc
         self.paymentViewController = CardPaymentView()
-        self.paymentViewController.paymentViewDismissedProtocol = self
         paymentViewController.paymentViewTitle = paymentViewTitle
         paymentViewController.paymentViewCancelText = paymentViewCancelText
     }

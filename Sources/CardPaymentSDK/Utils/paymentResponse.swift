@@ -7,9 +7,23 @@
 
 import Foundation
 
+
+public enum PaymentStatus{
+    
+    case processing
+    //used when the user dismisses the payment dialog
+    case canceled
+}
+
 public struct PaymentResponse{
     
-    public var transactionId:String
-    public var status:String
+    public var paymentData:PaymentData?
+    public var status:PaymentStatus?
     
+}
+
+public struct PaymentData{
+    
+    public var amount:String?
+    public var transactionDate:String?
 }

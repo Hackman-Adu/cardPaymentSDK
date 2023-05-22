@@ -11,7 +11,7 @@ import WebKit
 
 public protocol PaymentViewDismissed{
     
-     func onDismissed(res:PaymentResponse)
+     func onPaymentDialogDismissed(res:PaymentResponse)
 }
 
 public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate{
@@ -27,7 +27,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     private var paymentSDKUrl:String  = "https://www.facebook.com"
     
     
-    public var paymentViewDismissedProtocol:PaymentViewDismissed?
+    public var delegate:PaymentViewDismissed?
     
 
     public override func viewDidLoad() {
@@ -75,7 +75,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     
     @objc public func dismissDialog(){
         dismiss(animated: true)
-        paymentViewDismissedProtocol?.onDismissed(res: PaymentResponse(transactionId: "", status: "canceled"))
+        delegate?.onPaymentDialogDismissed(res: PaymentResponse(paymentData: nil, status: .canceled))
     }
     
    public func setupNavBar() {
