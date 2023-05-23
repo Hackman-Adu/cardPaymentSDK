@@ -27,11 +27,9 @@ public class CardPaymentSDK  {
         paymentViewController.delegate = self.delegate
         let navigationController = viewController?.navigationController
         if navigationController == nil {
-            print("NAVIGATION CONTROLLER IS NIL HERE")
             let navController = UINavigationController(rootViewController: paymentViewController)
             self.viewController?.present(navController, animated: true)
         }else {
-            print("NAVIGATION CONTROLLER IS FOUND")
             self.viewController?.present(paymentViewController, animated: true)
         }
     }
