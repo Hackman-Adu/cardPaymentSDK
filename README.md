@@ -24,7 +24,8 @@ dependencies: [
 ```
 
 
-## Simple example
+# Simple example
+## Present CheckOut Page
 
 Simply, you present `CardPaymentView` which then loads the payment checkout page. Conform your `UIViewController` to `PaymentResponseDelegate` and implement `onResponseReceived`
 
@@ -34,3 +35,18 @@ payment.delegate = self
 payment.beginPayment()
 
 ```
+## Delegate Implementation
+
+```swift
+    func onResponseReceived(res: PaymentResponse) {
+        if res.status == .canceled{
+           ///when user dismisses payment dialog
+        }
+        if res.status == .processing{
+           ///when payment is processing
+        }
+    }
+
+```
+
+
