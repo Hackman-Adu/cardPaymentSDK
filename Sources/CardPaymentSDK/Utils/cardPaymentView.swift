@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import WebKit
 
+
 public protocol PaymentResponseDelegate{
     
      func onResponseReceived(res:PaymentResponse)

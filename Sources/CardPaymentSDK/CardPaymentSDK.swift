@@ -28,6 +28,7 @@ public class CardPaymentSDK  {
         let navigationController = viewController?.navigationController
         if navigationController == nil {
             let navController = UINavigationController(rootViewController: paymentViewController)
+            navController.modalPresentationStyle = .fullScreen
             self.viewController?.present(navController, animated: true)
         }else {
             self.viewController?.present(paymentViewController, animated: true)
