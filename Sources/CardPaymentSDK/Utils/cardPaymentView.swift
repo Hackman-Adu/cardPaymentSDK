@@ -9,9 +9,9 @@ import Foundation
 import UIKit
 import WebKit
 
-public protocol PaymentViewDismissed{
+public protocol PaymentResponseDelegate{
     
-     func onPaymentDialogDismissed(res:PaymentResponse)
+     func onResponseReceived(res:PaymentResponse)
 }
 
 public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDelegate, WKNavigationDelegate{
@@ -27,7 +27,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     private var paymentSDKUrl:String  = "https://www.facebook.com"
     
     
-    public var delegate:PaymentViewDismissed?
+    public var delegate:PaymentResponseDelegate?
     
 
     public override func viewDidLoad() {
@@ -76,7 +76,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     
     @objc public func dismissDialog(){
         dismiss(animated: true) {
-            self.delegate?.onPaymentDialogDismissed(res: PaymentResponse(paymentData: nil, status: .canceled))
+            self.delegate?.onResponseReceived(res: PaymentResponse(paymentData: nil, status: .canceled))
         }
        
     }

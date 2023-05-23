@@ -11,7 +11,7 @@ public class CardPaymentSDK  {
     
     private var paymentViewController:CardPaymentView!
     
-    public var delegate:PaymentViewDismissed?
+    public var delegate:PaymentResponseDelegate?
     
     
     public init(vc:UIViewController, paymentViewTitle:String,paymentViewCancelText:String){
