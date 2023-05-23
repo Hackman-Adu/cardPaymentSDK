@@ -44,7 +44,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
         self.view.addSubview(webView)
         NSLayoutConstraint.activate([
             webView.topAnchor
-                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor,constant: 45),
+                .constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             webView.leftAnchor
                 .constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
             webView.bottomAnchor
