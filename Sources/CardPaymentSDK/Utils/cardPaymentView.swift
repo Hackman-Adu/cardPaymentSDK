@@ -23,7 +23,7 @@ public class CardPaymentView:UIViewController, WKScriptMessageHandler, WKUIDeleg
     
     public var paymentViewTitle:String  = "Make Payment"
     
-    public var paymentViewCancelText:String  = "Cancel"
+    public var paymentViewCancelText:String  = "Dismiss"
     
     private var paymentSDKUrl:String  = "https://checkoutuat.transflowitc.com/?req=eyJmdWxsTmFtZSI6IndpbGxpYW0gbWVuc2FoIiwiZW1haWwiOiJ3aWxsaWFtbWVuc2FoQGdtYWlsLmNvbSIsInBheW1lbnRNZXRob2QiOiJjYXJkIiwibmFycmF0aW9uIjoiVGhpcyBpcyBhIGdlbmVyaWMgcGF5bWVudCBkZXNjcmlwdGlvbiIsImFtb3VudCI6MjAwLCJsb2dvIjoiaHR0cHM6Ly90Zi1tZXJjaGFudHMtdWF0LTQ2MzE0NDI4Mzk1NC5zMy5ldS13ZXN0LTEuYW1hem9uYXdzLmNvbS9sb2dvcy9lZTUwZWU1Yi01MTQyLTQ5NGMtODgwMi0zZGNlZmJlZjlmZjEuanBnIiwicGFnZURlc2NyaXB0aW9uIjoiS251c3QgQ2hlY2tvdXQgUGFnZSIsInBhZ2VUaXRsZSI6IktudXN0IiwiY3VycmVuY3kiOiJHSFMiLCJtc2lzZG4iOiIyMzMyMDE5OTE0MDciLCJ0cmFuc2FjdGlvblJlZmVyZW5jZSI6IjJmZTVjYTIyLWQ2ZDAtNDQzNi1hOGUzLTNmYThjZmVjYjIxNiJ9"
     
